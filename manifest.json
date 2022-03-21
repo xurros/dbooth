@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "dBooth App",
+  "name": "dBooth Meet App",
   "icons": [
     {
       "src": "favicon.ico",
@@ -13,14 +13,12 @@
       "type": "image/png",
       "sizes": "192x192",
       "purpose": "any maskable"
-
     },
     {
       "src": "meet-app-512.png",
       "type": "image/png",
       "sizes": "512x512",
       "purpose": "any maskable"
-
     }
   ],
   "start_url": ".",
@@ -28,5 +26,4 @@
   "theme_color": "#000000",
   "background_color": "#ffffff",
   "purpose": "any maskable"
-
 }
