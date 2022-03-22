@@ -1,11 +1,9 @@
 
 
 
-/* @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@200;300;400;500&family=League+Gothic&family=Merriweather:wght@400;700;900&family=Syne+Mono&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=PT+Sans+Narrow:wght@700&family=Syne+Mono&display=swap');
 
 body {
-  /* background-image: url("https://images.unsplash.com/photo-1640900935456-be5332f28a1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"); */
   font-family: "Jost";
   font-size: 16px;
   background-color: #eeee;
@@ -22,20 +20,24 @@ h1, h2, h3 {
   text-align: left;
   margin-left: 250px;
 }
-#eventButton {
-  border-radius: 18px;
-  padding: 8px;
+
+.event-button {
+  border-radius: 0px;
   background-color:rgba(253, 252, 250, 0.842);
   cursor: pointer;
-  font-size: 14px;
-  margin: 0;
-  padding: 5px;
-  float: right;
+  font-size: 13px;
+  margin-bottom: 5px;
+  padding: 6px;
+  float: left;
 }
 
 .location {
   color:rgb(6, 103, 128);
+}
 
+.startDate {
+  font-size: 14px;
+  font-weight: 400;
 }
 .App {
   text-align: center;
@@ -50,17 +52,25 @@ h1, h2, h3 {
 .event {
   width: 35%;
   background-color: rgb(231, 192, 64);
-  margin-left: 150px;
+  margin-left: 250px;
+  padding: 30px 40px 60px 45px;
+  margin-bottom: 40px;
+  text-align: left;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  position: relative;
 }
 
-.summary{
-  font-family: "PT Sans Narrow";
-  font-size: 26px;
+.event-summary{
+  /* font-family: "Jost"; */
+  font-size: 18px;
   font-weight: 700;
   letter-spacing: px;
 }
 .description {
   text-align: justify;
+  font-weight: 400;
+  font-size: 15px;
 }
 
 .googleEvent {
@@ -75,6 +85,7 @@ h1, h2, h3 {
 
 .googleEvent {
   font-size: 14px;
+  font-weight: 400;
 }
 .icon{
   float: right;
@@ -158,15 +169,6 @@ input[type="number"] {
 
 .suggestions > li:hover {
   background-color: #bcdcdb;
-}
-
-.event {
-  padding: 10px 10px 35px;
-  margin-bottom: 10px;
-  text-align: left;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  position: relative;
 }
 
 .details-btn {

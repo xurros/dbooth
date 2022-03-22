@@ -3,6 +3,7 @@ import Card from "react-bootstrap/Card";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import "../styles/Event.css";
 // import "bootstrap/dist/css/bootstrap.min.css";
 
 
@@ -32,7 +33,7 @@ class Event extends Component {
               <Card.Body>
                 <div className="summary">
                   <div>
-                    <Card.Title>
+                    <Card.Title className="title">
                       {event.summary}
                     </Card.Title>
 
