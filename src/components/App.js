@@ -1,12 +1,5 @@
 
 
-
-
-
-
-// ========
-
-
 import React, { Component } from "react";
 
 import EventList from "./EventList";
@@ -24,7 +17,11 @@ import "../styles/nprogress.css";
 class App extends Component {
   state = {
     events: [],
-    locations: []
+    locations: [],
+    numberOfEvents: 15,
+    filteredEvents: [],
+    currentLocation: "all",
+  
   }
 
   componentDidMount() {
@@ -44,24 +41,22 @@ class App extends Component {
   }
 
   updateEvents = (location, eventCount) => {
-    getEvents().then((events) => {
-      const locationEvents =
-        location === "all"
-          ? events
-          : events.filter((event) => event.location === location);
-      if (this.mounted) {
-        this.setState({
-          events: locationEvents.slice(0, eventCount),
-          currentLocation: location,
-        });
-      }
-    });
+    const events = this.state.events;
+    const locationEvents =
+      location === "all"
+        ? events
+        : events.filter((event) => event.location === location);
+    if (this.mounted) {
+      this.setState({
+        filteredEvents: locationEvents.slice(0, eventCount),
+        currentLocation: location,
+      });
+    }
   };
 
 
-
   render() {
-    const { events, locations, numberOfEvents } = this.state;
+    const { filteredEvents, locations, numberOfEvents } = this.state;
 
 
     return (
@@ -75,11 +70,13 @@ class App extends Component {
 
         <NumberOfEvents
           updateNumberOfEvents={(number) => {
-            this.updateNumberOfEvents(number);
-          }} />
+            this.setState({ numberOfEvents: number })
+          }}
+          numberOfEvents={numberOfEvents}
+        />
 
         <EventList
-          events={events}
+          events={filteredEvents}
           numberOfEvents={numberOfEvents} />
 
         <p className="author">ssoewandi :: 2022</p>

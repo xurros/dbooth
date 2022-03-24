@@ -5,7 +5,8 @@ import { WarningAlert } from "../Alert";
 
 class EventList extends Component {
   render() {
-    const { events } = this.props;
+    const { events, numberOfEvents } = this.props;
+
     return (
       <ul className="EventList">
         {!navigator.onLine ? (
@@ -13,14 +14,21 @@ class EventList extends Component {
         ) : (
           <WarningAlert text="" />
         )}
-        {events.map(event =>
-          <li key={event.id}>
-            <Event event={event} />
-          </li>
+
+
+        {events.map( (event, index) => {
+          if (index + 1 <= Number(numberOfEvents)) {
+            return (
+              <li key={event.id}>
+                <Event event={event} />
+              </li>
+            )}
+        }
         )}
       </ul>
     );
-  }
+
+  } 
 }
 
 export default EventList;
