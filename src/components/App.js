@@ -18,22 +18,22 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 15,
+    numberOfEvents: 10,
     filteredEvents: [],
     currentLocation: "all",
-  
+
   }
 
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({
-          events,
-          locations: extractLocations(events),
-        });
-      }
-    });
+      this.setState({
+        events,
+        filteredEvents: events,
+        locations: extractLocations(events),
+      });
+    }
+    );
   }
 
   componentWillUnmount() {
@@ -54,7 +54,6 @@ class App extends Component {
     }
   };
 
-
   render() {
     const { filteredEvents, locations, numberOfEvents } = this.state;
 
@@ -62,6 +61,8 @@ class App extends Component {
     return (
 
       <div className="App">
+        <h4 className="title"> dBooth Meet App </h4>
+        <p className="subtitle"> where people get connected </p>
 
         <CitySearch
           locations={locations}
@@ -77,7 +78,8 @@ class App extends Component {
 
         <EventList
           events={filteredEvents}
-          numberOfEvents={numberOfEvents} />
+          numberOfEvents={numberOfEvents}
+          errorText={this.state.errorText} />
 
         <p className="author">ssoewandi :: 2022</p>
 

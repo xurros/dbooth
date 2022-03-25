@@ -50,22 +50,23 @@ h1, h2, h3 {
 
 /* styling the blocks of each event */
 .event {
-  width: 35%;
+  max-width: 55%;
   background-color: rgb(231, 192, 64);
   margin-left: 250px;
+  /* margin-bottom: 40px; */
   padding: 30px 40px 60px 45px;
-  margin-bottom: 40px;
   text-align: left;
   border: 1px solid #ccc;
   border-radius: 10px;
   position: relative;
+  margin: auto;
 }
 
 .event-summary{
   /* font-family: "Jost"; */
   font-size: 18px;
   font-weight: 700;
-  letter-spacing: px;
+  letter-spacing: 3px;
 }
 .description {
   text-align: justify;
@@ -144,6 +145,21 @@ input[type="number"] {
   position: relative;
 }
 
+
+.dropdown-toggle {
+  width: 100%;
+  border: 1px solid var(--event-details-color);
+  background-color: transparent;
+}
+
+.dropdown-toggle:hover {
+  border: 1px solid var(--event-details-color);
+}
+
+.NumberOfEvents {
+  display:inline-block;
+  margin-right: 100px;
+}
 .suggestions {
   width: 250px;
   position: absolute;

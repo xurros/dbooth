@@ -29,7 +29,7 @@ class Event extends Component {
         <Row>
           <Col>
 
-            <Card className="event" border="secondary" style={{ width: "60rem" }}>
+            <Card className="event" border="secondary" style={{ marginBottom: "30px" }}>
               <Card.Body>
                 <div className="summary">
                   <div>

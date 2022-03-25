@@ -17,12 +17,14 @@ class EventList extends Component {
 
 
         {events.map( (event, index) => {
-          if (index + 1 <= Number(numberOfEvents)) {
+          console.log(event, numberOfEvents)
+          if (index + 1 <= numberOfEvents) {
             return (
               <li key={event.id}>
                 <Event event={event} />
               </li>
-            )}
+            )} else 
+            return undefined
         }
         )}
       </ul>
