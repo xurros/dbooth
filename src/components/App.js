@@ -5,10 +5,12 @@ import React, { Component } from "react";
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
+import WelcomeScreen from "../WelcomeScreen";
+
 
 import github_icon from '../GitHub_icon.png';
 
-import { extractLocations, getEvents } from "../api";
+import { extractLocations, getEvents, getAccessToken, checkToken } from "../api";
 
 
 import "../styles/App.css";
@@ -18,23 +20,41 @@ class App extends Component {
   state = {
     events: [],
     locations: [],
-    numberOfEvents: 10,
+    numberOfEvents: 15,
     filteredEvents: [],
     currentLocation: "all",
 
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      this.setState({
-        events,
-        filteredEvents: events,
-        locations: extractLocations(events),
+    const accessToken = localStorage.getItem("access_token");
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    const searchParams = new URLSearchParams(window.location.search);
+    const code = searchParams.get("code");
+
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+    if ((code || isTokenValid) && this.mounted) {
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({ events, locations: extractLocations(events) });
+        }
       });
     }
-    );
-  }
+  };
+
+
+  // componentDidMount() {
+  //   this.mounted = true;
+  //   getEvents().then((events) => {
+  //     this.setState({
+  //       events,
+  //       filteredEvents: events,
+  //       locations: extractLocations(events),
+  //     });
+  //   }
+  //   );
+  // }
 
   componentWillUnmount() {
     this.mounted = false;
@@ -89,6 +109,11 @@ class App extends Component {
           src={github_icon}
           width="25"
           height="25"
+        />
+
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => { getAccessToken() }}
         />
       </div>
     );
