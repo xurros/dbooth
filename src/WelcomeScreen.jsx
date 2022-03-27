@@ -6,27 +6,9 @@ import github_icon from './GitHub_icon.png';
 
 function WelcomeScreen(props) {
   return props.showWelcomeScreen ? (
+    
     <div className="WelcomeScreen">
-
-
-{/* PROBLEM!! */}
-
-{/*       
-      <div className="watermark">
-        <ul className="circles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        </ul>
-      </div> */}
-     
+      
       
           <h3 className="header">Welcome to the Booth MeetApp</h3>
           <p>
@@ -84,8 +66,22 @@ function WelcomeScreen(props) {
             rel="nofollow noopener">
             Privacy policy
           </a>
-
+          <div className="watermark">
+        <ul className="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        </ul>
+      </div>     
         </div >
+        
       
 
 

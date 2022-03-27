@@ -6,13 +6,13 @@ import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import Chart from "./Rechart"
 import EventGenre from "./EventGenre"
-// import WelcomeScreen from "../WelcomeScreen";
+import WelcomeScreen from "../WelcomeScreen";
 
 
 import github_icon from '../GitHub_icon.png';
 
-// import { extractLocations, getEvents, getAccessToken, checkToken } from "../api";
-import { extractLocations, getEvents } from "../api";
+import { extractLocations, getEvents, getAccessToken, checkToken } from "../api";
+// import { extractLocations, getEvents } from "../api";
 
 
 
@@ -30,50 +30,50 @@ class App extends Component {
     showWelcomeScreen: undefined,
   }
 
-  // async componentDidMount() {
-  //   this.mounted = true;
-  //   const accessToken = localStorage.getItem("access_token");
-  //   const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-  //   console.log('isTokenValid', isTokenValid)
-  //   const searchParams = new URLSearchParams(window.location.search);
-  //   console.log('searchParams', searchParams)
-  //   const code = searchParams.get("code");
-  //   console.log('code', code)
-
-  //   this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-
-  //   if ((code || isTokenValid) && this.mounted) {
-
-
-  //     getEvents().then((events) => {
-  //       if (this.mounted) {
-  //         this.setState({
-  //           events,
-  //           filteredEvents: events,
-  //           locations: extractLocations(events)
-  //         });
-  //       }
-  //     });
-  //   }
-  // };
-
-
-
-
-
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
+    const accessToken = localStorage.getItem("access_token");
+    const isTokenValid = (await checkToken(accessToken)).error ? false : true;
+    console.log('isTokenValid', isTokenValid)
+    const searchParams = new URLSearchParams(window.location.search);
+    console.log('searchParams', searchParams)
+    const code = searchParams.get("code");
+    console.log('code', code)
 
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({
-          events,
-          filteredEvents: events,
-          locations: extractLocations(events),
-        })
-      }
-    });
-  }
+    this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+
+    if ((code || isTokenValid) && this.mounted) {
+
+
+      getEvents().then((events) => {
+        if (this.mounted) {
+          this.setState({
+            events,
+            filteredEvents: events,
+            locations: extractLocations(events)
+          });
+        }
+      });
+    }
+  };
+
+
+
+
+
+  // componentDidMount() {
+  //   this.mounted = true;
+
+  //   getEvents().then((events) => {
+  //     if (this.mounted) {
+  //       this.setState({
+  //         events,
+  //         filteredEvents: events,
+  //         locations: extractLocations(events),
+  //       })
+  //     }
+  //   });
+  // }
 
   componentWillUnmount() {
     this.mounted = false;
@@ -113,8 +113,8 @@ class App extends Component {
   render() {
     const { filteredEvents, locations, numberOfEvents } = this.state;
 
-    // if (this.state.showWelcomeScreen === undefined)
-    //   return <div className="App" />;
+    if (this.state.showWelcomeScreen === undefined)
+      return <div className="App" />;
 
 
     return (
@@ -204,10 +204,10 @@ class App extends Component {
         </a>
 
 
-        {/* <WelcomeScreen
+        <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }}
-        /> */}
+        />
       </div>
 
     );

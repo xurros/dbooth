@@ -98,7 +98,6 @@
 
 
   .watermark {
-    position: absolute;
     top: 0;
     left: 0;
     width: 100%;
@@ -107,7 +106,7 @@
   }
 
   .watermark li {
-    position: absolute;
+    position: fixed;
     display: block;
     list-style: none;
     width: 20px;

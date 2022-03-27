@@ -63,8 +63,7 @@ p {
 }
 
 .booth-logo {
-  min-width: 6%;
-  max-width: 9%;
+  max-width: 6%;
 }
 
 .logo {
@@ -195,12 +194,6 @@ ul {
 .city-search-box{
   margin-left: 20%;
 }
-.number-box
-.city-search-box {
-  top: 0;
-  left: 0;
-  padding: 20px 20px 80px 20px;
-}
 
 .buttons {
   display: flex;
@@ -218,7 +211,7 @@ ul {
 }
 
 .CitySearch {
-  display: inline-block;
+  /* display: block; */
   flex-basis: 300px;
   margin-right: 250px;
 }
@@ -228,7 +221,7 @@ ul {
   position: absolute;
   z-index: 2;
   align-self: center;
-  margin: 0;
+  margin: 270px 0px;
   top: 43px;
   font-size: 14px;
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
