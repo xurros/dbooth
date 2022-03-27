@@ -198,8 +198,8 @@ ul {
 .city-search-box {
   top: 0;
   left: 0;
+  padding: 20px 20px 80px 20px;
 }
-
 
 .buttons {
   display: flex;
