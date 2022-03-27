@@ -8,7 +8,7 @@ class EventList extends Component {
     const { events, numberOfEvents } = this.props;
 
     return (
-      <ul className="EventList">
+      <div className="EventList">
         {!navigator.onLine ? (
           <WarningAlert text="No internet connection. Cache data is being used." />
         ) : (
@@ -16,21 +16,23 @@ class EventList extends Component {
         )}
 
 
-        {events.map( (event, index) => {
+        {events.map((event, index) => {
           console.log(event, numberOfEvents)
           if (index + 1 <= numberOfEvents) {
             return (
-              <li key={event.id}>
+              <div 
+                key={event.id}>
                 <Event event={event} />
-              </li>
-            )} else 
+              </div>
+            )
+          } else
             return undefined
         }
         )}
-      </ul>
+      </div>
     );
 
-  } 
+  }
 }
 
 export default EventList;

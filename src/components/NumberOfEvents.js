@@ -7,7 +7,6 @@ class NumberOfEvents extends Component {
     errorText: "",
   };
 
-
   handleInputChanged = (event) => {
     const value = event.target.value;
     if (value < 1 || value > 32) {

@@ -4,7 +4,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import "../styles/Event.css";
-// import "bootstrap/dist/css/bootstrap.min.css";
 
 
 
@@ -29,7 +28,7 @@ class Event extends Component {
         <Row>
           <Col>
 
-            <Card className="event" border="secondary" style={{ marginBottom: "30px" }}>
+            <Card className=" event" border="secondary" style={{ marginBottom: "30px" }}>
               <Card.Body>
                 <div className="summary">
                   <div>
@@ -43,7 +42,8 @@ class Event extends Component {
                     </p>
 
                     <p className="location">
-                      @ {event.summary}{" "}:: {" "}
+                      @{event.summary} {" "} :: {" "}
+                                            
                       <span>{event.location}</span>
                     </p>
                   </div>
