@@ -141,11 +141,14 @@ class App extends Component {
           <a href="/">
             <img className="booth-logo" alt="logo" src={Logo} />
           </a>
+          <div>
           <Navbar.Brand className="logo">
             dBooth Meet App
           </Navbar.Brand>
         </div>
+        </div>
 
+    
         <div>
           <div className="city-search-box">
             <CitySearch
