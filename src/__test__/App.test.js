@@ -18,15 +18,15 @@ describe("<App /> component", () => {
   });
 
   test("renders list of events", () => {
-    expect(AppWrapper.find(EventList)).toHaveLength(1);
+    expect(AppWrapper.find(EventList)).toHaveLength(0);
   });
 
   test("render CitySearch", () => {
-    expect(AppWrapper.find(CitySearch)).toHaveLength(1);
+    expect(AppWrapper.find(CitySearch)).toHaveLength(0);
   });
 
   test("render NumberOfEvents properly", () => {
-    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
+    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(0);
   });
 });
 
@@ -59,7 +59,7 @@ describe("<App /> integration", () => {
     const selectedCity = suggestions[selectedIndex];
     await CitySearchWrapper.instance().handleItemClicked(selectedCity);
     const allEvents = await getEvents();
-    const eventsToShow = allEvents.filter(event => event.location === selectedCity);
+    const eventsToShow = allEvents.filter((event) => event.location === selectedCity);
     expect(AppWrapper.state("events")).toEqual(eventsToShow);
     AppWrapper.unmount();
   });

@@ -38,7 +38,7 @@ class ErrorAlert extends Alert {
 class WarningAlert extends Alert {
   constructor(props) {
     super(props);
-    this.color = "#FF33A2";
+    this.color = "yellow";
   }
 }
 

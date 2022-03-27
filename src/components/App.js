@@ -1,110 +1,89 @@
-
 import React, { Component } from "react";
 
 import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
-import Chart from "./Rechart"
-import EventGenre from "./EventGenre"
 import WelcomeScreen from "../WelcomeScreen";
-
 
 import github_icon from '../GitHub_icon.png';
 
-import { extractLocations, getEvents, getAccessToken, checkToken } from "../api";
-// import { extractLocations, getEvents } from "../api";
+import { extractLocations, getEvents, checkToken, getAccessToken } from "../api";
+import { WarningAlert } from "../Alert";
 
-import Navbar from 'react-bootstrap/Navbar'
 
 
 import "../styles/App.css";
 import "../styles/nprogress.css";
-import Logo from "../logo.png"
 
 class App extends Component {
   state = {
     events: [],
     locations: [],
     numberOfEvents: 32,
-    filteredEvents: [],
-    currentLocation: "all",
-    showWelcomeScreen: undefined,
+    showWelcomeScreen: undefined
   }
 
   async componentDidMount() {
     this.mounted = true;
     const accessToken = localStorage.getItem("access_token");
     const isTokenValid = (await checkToken(accessToken)).error ? false : true;
-    console.log('isTokenValid', isTokenValid)
     const searchParams = new URLSearchParams(window.location.search);
-    console.log('searchParams', searchParams)
     const code = searchParams.get("code");
-    console.log('code', code)
 
     this.setState({ showWelcomeScreen: !(code || isTokenValid) });
-
     if ((code || isTokenValid) && this.mounted) {
-
-
       getEvents().then((events) => {
         if (this.mounted) {
-          this.setState({
-            events,
-            filteredEvents: events,
-            locations: extractLocations(events)
-          });
+          this.setState({ events, locations: extractLocations(events) });
         }
       });
     }
-  };
 
+    if (!navigator.onLine) {
+      this.setState({
+        OfflineTextAlert: "No internet connection at this moment",
+      });
+    } else {
+      this.setState({
+        OfflineTextAlert: "",
+      });
+    }
+  }
 
-
-
-
-  // componentDidMount() {
-  //   this.mounted = true;
-
-  //   getEvents().then((events) => {
-  //     if (this.mounted) {
-  //       this.setState({
-  //         events,
-  //         filteredEvents: events,
-  //         locations: extractLocations(events),
-  //       })
-  //     }
-  //   });
-  // }
 
   componentWillUnmount() {
     this.mounted = false;
   }
 
-  updateEvents = (location, eventCount) => {
-    const events = this.state.events;
-    const locationEvents =
-      location === "all"
-        ? events
-        : events.filter((event) => event.location === location);
-    if (this.mounted) {
-      this.setState({
-        filteredEvents: locationEvents.slice(0, eventCount),
-        currentLocation: location,
-      });
-    }
+  updateEvents = async (location, eventCount = this.state.numberOfEvents) => {
+
+    getEvents().then((events) => {
+      const locationEvents =
+        location === "all"
+          ? events
+          : events.filter((event) => event.location === location);
+      if (this.mounted) {
+        this.setState({
+          events: locationEvents.slice(0, eventCount),
+          currentLocation: location,
+        });
+      }
+    });
   };
 
-  logOut = () => {
-    localStorage.removeItem("access_token")
-    this.componentDidMount()
-  }
+  updateNumberOfEvents = (eventCount) => {
+    const { currentLocation } = this.state;
+    this.setState({
+      numberOfEvents: eventCount,
+    });
+    this.updateEvents(currentLocation, eventCount);
+  };
+
 
   getData = () => {
     const { locations, events } = this.state;
     const data = locations.map((location) => {
-      const number = events.filter(
-        (event) => event.location === location
-      ).length;
+      const number = events.filter((event) => event.location === location).length
       const city = location.split(", ").shift();
       return { city, number };
     });
@@ -112,105 +91,53 @@ class App extends Component {
   };
 
   render() {
-    const { filteredEvents, locations, numberOfEvents } = this.state;
+
+    const { events, locations, numberOfEvents, OfflineTextAlert } = this.state;
 
     if (this.state.showWelcomeScreen === undefined)
-    return <div className="App" />;
-
+      return <div className="App" />;
 
     return (
-
       <div className="App">
-        <div className="title-wrapper">
-          <a href="/">
-            <img className="booth-logo" alt="logo" src={Logo} />
-          </a>
-          <div>
-          <Navbar.Brand className="logo">
-            dBooth Meet App
-          </Navbar.Brand>
-        </div>
-        </div>
+        <h4> dBooth Meet App</h4>
 
-    
-        <div>
-          <div className="city-search-box">
-            <CitySearch
-              locations={locations}
-              numberOfEvents={numberOfEvents}
-              updateEvents={this.updateEvents} />
-          </div>
+        <CitySearch
+          locations={locations}
+          numberOfEvents={numberOfEvents}
+          updateEvents={this.updateEvents}
+        />
 
-          <div className="number-box">
-            <NumberOfEvents
-              updateNumberOfEvents={(number) => {
-                this.setState({ numberOfEvents: number })
-              }}
-              numberOfEvents={numberOfEvents}
-            />
-          </div>
-        </div>
-
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
-        <div className="chart-wrapper">
-          <h4>Pie and Scattered Charts</h4>
-          <br />
-          <br />
-          <br />
-
-
-          <div className="data-vis-wrapper">
-            <EventGenre
-              className="event-genre"
-              events={filteredEvents}
-            />
-
-            <Chart
-              locations={locations}
-              displayedEvents={filteredEvents}
-            />
-
-          </div>
-        </div>
-
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+        <NumberOfEvents
+          numberOfEvents={this.state.numberOfEvents}
+          updateNumberOfEvents={this.updateNumberOfEvents}
+        />
 
         <EventList
-          events={filteredEvents}
+          events={events}
           numberOfEvents={numberOfEvents}
         />
 
+        <WarningAlert
+          text={OfflineTextAlert}
+        />
+
+
         <p className="author">ssoewandi :: 2022</p>
 
-        <a href="https://xurros.github.io/dbooth">
-          <img
-            className="icon"
-            alt="github_icon"
-            src={github_icon}
-            width="25"
-            height="25"
-          />
-        </a>
+        <img
+          className="icon"
+          alt="github_icon"
+          src={github_icon}
+          width="25"
+          height="25"
+        />
 
-        
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => { getAccessToken() }}
         />
-      </div>
 
+      </div>
     );
   }
 }

@@ -20,11 +20,11 @@ describe("<EventList /> component", () => {
   });
 
   test("render a summary", () => {
-    expect(EventWrapper.find(".summary")).toHaveLength(1);
+    expect(EventWrapper.find(".event-summary")).toHaveLength(1);
   });
 
   test("render button os show details", () => {
-    expect(EventWrapper.find(".event-button")).toHaveLength(1);
+    expect(EventWrapper.find(".show-details")).toHaveLength(1);
   });
 
   test("open details when the button is clicked", () => {
@@ -39,7 +39,7 @@ describe("<EventList /> component", () => {
     EventWrapper.setState({
       collapsed: false,
     });
-    EventWrapper.find(".event-button").simulate("click");
+    EventWrapper.find(".hide-details").simulate("click");
     expect(EventWrapper.state("collapsed")).toBe(true);
   });
 

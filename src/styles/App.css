@@ -1,30 +1,20 @@
 
+
+
+/* @import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@200;300;400;500&family=League+Gothic&family=Merriweather:wght@400;700;900&family=Syne+Mono&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Jost:wght@200;300;400&family=PT+Sans+Narrow:wght@700&family=Syne+Mono&display=swap');
 
 body {
+  /* background-image: url("https://images.unsplash.com/photo-1640900935456-be5332f28a1a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=736&q=80"); */
   font-family: "Jost";
   font-size: 16px;
-  /* background-color: #eeee; */
-  background-image: url(https://images.unsplash.com/photo-1524685364536-a6f820f6c5ce?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1064&q=80);
-  background-size: cover;
+  background-color: #eeee;
 }
 
 h1, h2, h3 {
   font-family: "PT Sans Narrow";
   font-weight: 800;
   letter-spacing: 0.25px;
-}
-
-h4, .title{
-  margin: 0;
-}
-
-p, .subtitle {
-  margin-bottom: 30px;
-}
-
-p {
-  margin: 5px 0;
 }
 
 .NumberOfEvents {
@@ -45,7 +35,6 @@ p {
 
 .location {
   color:rgb(6, 103, 128);
-  font-size: 14px;
 }
 
 .startDate {
@@ -55,75 +44,31 @@ p {
 .App {
   text-align: center;
   padding: 2% 5%;
-  height: 100%;
 }
 
-* {
+.App * {
   box-sizing: border-box;
 }
 
-.booth-logo {
-  max-width: 4%;
-}
-
-.logo {
-  font-size: 20px;
-  font-weight: 600;
-  letter-spacing: 0.9px;
-}
-
-.chart-wrapper {
-  position: static;
-  padding: 20px 20px 35px;
-  margin: 10px;
-  text-align: center;
-  letter-spacing: 0.9px;;
-  background-color: rgb(250, 243, 243);
+/* styling the blocks of each event */
+.event {
+  width: 35%;
+  background-color: rgb(231, 192, 64);
+  margin-left: 250px;
+  padding: 30px 40px 60px 45px;
+  margin-bottom: 40px;
+  text-align: left;
   border: 1px solid #ccc;
   border-radius: 10px;
-  box-shadow: 1px 1px 10px rgba(227, 226, 231, 0.2);
-}
-
-.title-wrapper {
-  padding: 20px 20px 80px 20px;
-}
-
-/* styling the blocks of each event */
-.event{
-  max-width: 85%;
-  min-height: 200px;
-  background-color: rgb(235, 203, 99);
-  justify-content: space-between;
-  flex-direction: column;
-  display: flex;
-  padding: 20px 20px 35px 40px;
-  margin: 10px;
-  text-align: left;
-  border: 1px solid #d6d4ce;
-  border-radius: 10px;
-  box-shadow: 1px 1px 10px rgba(65, 60, 88, 0.2);
-}
-
-.EventList {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
-  list-style: none;
-  text-align: center;
+  position: relative;
 }
 
 .event-summary{
   /* font-family: "Jost"; */
   font-size: 18px;
-  font-weight: 600;
-  letter-spacing: 3px;
+  font-weight: 700;
+  letter-spacing: px;
 }
-
-.data-vis-wrapper {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
 .description {
   text-align: justify;
   font-weight: 400;
@@ -131,17 +76,19 @@ p {
 }
 
 .googleEvent {
-  font-size: 14px;
+  font-size: 18px;
   text-decoration: none;
-  font-weight: 400;
 }
 
 .about{
-  display: flex;
   font-size: 16px;
   font-family: "Jost";
 }
 
+.googleEvent {
+  font-size: 14px;
+  font-weight: 400;
+}
 .icon{
   float: right;
   margin-right: 20px;
@@ -149,11 +96,29 @@ p {
 }
 
 .author {
-  float:right;
+  float: right;
   margin-right: 20px;
   font-size: 14px;
   font-family: "Syne Mono";
 }
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+p {
+  margin: 5px 0;
+}
+
+.display-none {
+  display: none;
+}
+
+/* .showSuggestions - remove the dot from <ul> */
+.showSuggestions {
+  display: block;
+}
+
 
 input[type="text"],
 input[type="number"] {
@@ -167,59 +132,18 @@ input[type="number"] {
   height: 38px;
 }
 
-.navbar-logo {
-  width: 50px;
-}
-
-.NumberOfEvents, .CitySearch {
-  display:inline-block;
-  margin-right: 100px;
-}
-
-.numberOfEvents {
-  width: 200px;
-  margin: auto;
-  text-align: center;
-}
-/*  STYLING FOR CITYSEARCH.JS */
-ul {
-  padding: 0;
-  list-style: none;
-}
-
-.display-none {
-  display: none;
-}
-
-.city-search-box{
-  margin-left: 20%;
-}
-.number-box
-.city-search-box {
-  top: 0;
-  left: 0;
-  padding: 20px 20px 80px 20px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: space-between;
-}
-
-/* .showSuggestions - remove the dot from <ul> */
-.showSuggestions {
-  display: block;
-}
-
 .city {
   width: 250px;
   margin-bottom: 30px;
 }
 
 .CitySearch {
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
   flex-basis: 300px;
-  margin-right: 400px;
+  max-width: 300px;
+  margin: auto;
+  position: relative;
 }
 
 .suggestions {
@@ -246,17 +170,43 @@ ul {
 }
 
 .suggestions > li:hover {
-  background-color: #87d8ec;
+  background-color: #bcdcdb;
 }
 
-/*  ========= END OF STYLING FOR CITYSEARCH.JS */
+.details-btn {
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
 
+.name {
+  font-size: 18px;
+  font-weight: 600;
+}
 
-/* STYLING FOR EVENTS.JS */
+.group-name {
+  text-transform: uppercase;
+  font-size: 14px;
+}
+
+.going,
+.visibility {
+  font-style: italic;
+}
+
 .description {
   overflow-x: hidden;
 }
 
+.numberOfEvents {
+  width: 200px;
+  margin: 20px auto;
+  text-align: center;
+}
 
 .button-wrapper {
   display: grid;
@@ -275,14 +225,12 @@ ul {
   display: flex;
   align-items: center;
   flex-direction: column;
-  position: static;
 }
 
 .data-vis-wrapper .recharts-responsive-container {
   min-width: 100%;
   display: flex;
 }
-
 .recharts-surface {
   overflow: visible;
 }
@@ -308,15 +256,12 @@ ul {
   border-radius: 2px;
   box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
 }
-
 .google-btn:hover {
   box-shadow: 0 0 6px #4285f4;
 }
-
 .google-btn:active {
   background: #1669f2;
 }
-
 .google-icon-wrapper {
   position: absolute;
   margin-top: 1px;
@@ -326,7 +271,6 @@ ul {
   border-radius: 2px;
   background-color: #fff;
 }
-
 .google-icon {
   position: absolute;
   margin-top: 11px;
@@ -334,7 +278,6 @@ ul {
   width: 18px;
   height: 18px;
 }
-
 .btn-text {
   float: right;
   margin: 11px 11px 0 0;
@@ -343,6 +286,7 @@ ul {
   letter-spacing: 0.2px;
   font-family: "Jost";
 }
+
 
 
 @media only screen and (min-width: 992px) {

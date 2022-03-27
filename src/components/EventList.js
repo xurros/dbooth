@@ -5,33 +5,21 @@ import { WarningAlert } from "../Alert";
 
 class EventList extends Component {
   render() {
-    const { events, numberOfEvents } = this.props;
-
+    const { events } = this.props;
     return (
-      <div className="EventList">
+      <ul className="EventList">
         {!navigator.onLine ? (
           <WarningAlert text="No internet connection. Cache data is being used." />
         ) : (
           <WarningAlert text="" />
         )}
-
-
-        {events.map((event, index) => {
-          console.log(event, numberOfEvents)
-          if (index + 1 <= numberOfEvents) {
-            return (
-              <div 
-                key={event.id}>
-                <Event event={event} />
-              </div>
-            )
-          } else
-            return undefined
-        }
+        {events.map(event =>
+          <li key={event.id}>
+            <Event event={event} />
+          </li>
         )}
-      </div>
+      </ul>
     );
-
   }
 }
 
