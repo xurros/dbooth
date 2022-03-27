@@ -63,7 +63,8 @@ p {
 }
 
 .booth-logo {
-  max-width: 5%;
+  min-width: 6%;
+  max-width: 9%;
 }
 
 .logo {
@@ -219,7 +220,7 @@ ul {
 .CitySearch {
   display: inline-block;
   flex-basis: 300px;
-  margin-right: 400px;
+  margin-right: 250px;
 }
 
 .suggestions {

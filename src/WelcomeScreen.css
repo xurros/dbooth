@@ -97,7 +97,7 @@
   }
 
 
-  .circles {
+  .watermark {
     position: absolute;
     top: 0;
     left: 0;
@@ -106,7 +106,7 @@
     overflow: hidden;
   }
 
-  .circles li {
+  .watermark li {
     position: absolute;
     display: block;
     list-style: none;
@@ -118,7 +118,7 @@
 
   }
 
-  .circles li:nth-child(1) {
+  .watermark li:nth-child(1) {
     left: 25%;
     width: 80px;
     height: 80px;
@@ -126,7 +126,7 @@
   }
 
 
-  .circles li:nth-child(2) {
+  .watermark li:nth-child(2) {
     left: 10%;
     width: 20px;
     height: 20px;
