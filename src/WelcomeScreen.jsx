@@ -9,23 +9,25 @@ function WelcomeScreen(props) {
 
 
     <div className="WelcomeScreen">
-      <div className="area">
-        <ul className="circles">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-        </ul>
-      </div>
+    
+//     PROBLEMS!!!
+//       <div className="area">
+//         <ul className="circles">
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//           <li></li>
+//         </ul>
+//       </div>
 
       <h3 className="header">Welcome to the Booth MeetApp</h3>
       <p>
